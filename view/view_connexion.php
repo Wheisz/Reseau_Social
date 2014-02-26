@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php //EnTete() ?>
-        <form method="post" action="connexion.php" enctype="multipart/form-data">
+        <form method="post" action="public/connexion.php" enctype="multipart/form-data">
             <div>
                 <label for="pseudo">Pseudo : </label>
                 <input id="pseudo" name="pseudo" type="text"/>

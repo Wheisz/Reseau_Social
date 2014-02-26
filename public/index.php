@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require 'library/fonctions.php';
 
+var_dump($_SESSION);
 
-require 'view/view_index.php';
+require '../view/view_index.php';
