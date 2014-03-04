@@ -13,8 +13,17 @@ function ListeDernierMembre()
 
 function EnTete()
 {
-     echo '<div id="en_tete">Réseau IIA ' . date("D d M Y") 
-            // Si on est pas connecté : inscription / Connexion à mon compte 
+     echo '<div id="en_tete">Réseau IIA ' . date("D d M Y"); 
+            // Si on est pas connecté : inscription / Connexion à mon compte
+            if (Session() == FALSE)
+            {
+               echo '<a href="inscription.php" name="inscription"/> Inscription</a> / <a href="connexion.php" name="connexion"/>Connexion</a>';
+            }
             // Si on est connecté : Mon compte nom_du_compte / Déconnexion 
-        . '</div>';
+            else
+            {
+                echo '<a href="monCompte.php" name="inscription"/> Mon compte ' . $_SESSION['pseudo'] .'</a> / <a href="index.php" onclick="' . session_destroy() . '" name="connexion"/>Déconnexion</a>';
+            }
+            
+    echo '</div>';
 }

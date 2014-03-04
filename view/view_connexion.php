@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Connexion</title>
     </head>
     <body>
-        <?php// EnTete() ?>
+        <?php EnTete() ?>
         <form method="post" action="../public/connexion.php" enctype="multipart/form-data">
             <div>
                 <label for="pseudo">Pseudo : </label>

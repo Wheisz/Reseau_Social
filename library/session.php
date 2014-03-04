@@ -7,14 +7,12 @@
  */
 
 function Session()
-{
-    session_start();
-    
+{    
     if (isset($_SESSION['connecter']))
     {
         if ($_SESSION['connecter'] === "TRUE")
         {
-            return $_SESSION['connecter'];
+            return TRUE;
         }
         else
         {

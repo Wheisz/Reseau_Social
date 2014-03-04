@@ -5,7 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Session();
+require '../library/session.php';
+require '../library/fonctions.php';
 
 $bdd = ConnexionBDD();
 
@@ -13,11 +14,29 @@ $bdd = ConnexionBDD();
 if (empty($_POST) == FALSE)
 {
     // si la fonction est pas vide donc log bon
-    if (empty(GetMdp($bdd, $_POST['pseudo'], $_POST['mdp'])) == FALSE)
+    if (GetMdp($bdd, $_POST['pseudo'], $_POST['mdp']) != NULL)
     {
         $_SESSION['connecter'] = TRUE;
+        $_SESSION['pseudo'] = $_POST['pseudo'];
+    }
+    else
+    {
+        $TabErreur['connexion'] = 'Mauvais pseudo/mot de passe.';
     }
 }
 
+// Si l'user est connecté
+if (Session() == TRUE)
+{
+    // on le redirige sur la vue de l'index
+    require '../view/view_index.php';
+}
+// sinon
+else  
+{
+     // encore la page pour se co
+    require '../view/view_connexion.php';
+}
 
-require '../view/view_connexion.php';
+
+

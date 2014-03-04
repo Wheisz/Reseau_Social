@@ -36,3 +36,10 @@ function GetMdp($bdd, $pseudo, $mdp)
     return $donnees['mdp_user'];
     
 }
+
+function SaveUser($bdd, $pseudo, $mdp)
+{
+    $requete = $bdd->prepare('SELECT mdp_user FROM user WHERE pseudo_user = :pseudo AND mdp_user = :mdp');
+    $requete->execute(array(':pseudo' => $pseudo, ':mdp' => $mdp));
+    $donnees = $requete->fetch();
+}
