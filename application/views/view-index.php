@@ -23,7 +23,7 @@ and open the template in the editor.
                 Voir ce qui se raconte sur ...
             </div>
             <!--  formulaire : [saisie texte]         Rechercher -->
-            <form method="post" action="../public/index.php" enctype="multipart/form-data">
+            <form method="post" action="../application/controllers/ctrl-index.php" enctype="multipart/form-data">
                 <label for="texte_recherche"></label>
                 <input id="texte_recherche" type="text" name="texte_recherche" value="Saisissez votre texte..." onclick="value=''"/>
                 <input type="submit" value="Rechercher"/>   
@@ -38,7 +38,7 @@ and open the template in the editor.
 }
 else
 {
-    require '../public/connexion.php';
+    require '../application/controllers/ctrl-connexion.php';
 }
 
 ?>

@@ -1,1 +1,2 @@
-INSERT INTO user VALUES (pseudo_user, mdp_user)
+INSERT INTO user (pseudo_user, mdp_user) VALUES
+	

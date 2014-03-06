@@ -5,16 +5,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require '../library/session.php';
-require '../library/fonctions.php';
-
-$bdd = ConnexionBDD();
 
 // Si $_POST est pas vide
 if (empty($_POST) == FALSE)
 {
+    require BASE_PATH.'library/session.php';
+    require BASE_PATH.'library/fonctions.php';
+    
     // si la fonction est pas vide donc log bon
-    if (GetMdp($bdd, $_POST['pseudo'], $_POST['mdp']) != NULL)
+    if (My_Entity_User::GetMdp($_POST['pseudo'], $_POST['mdp']) != NULL)
     {
         $_SESSION['connecter'] = TRUE;
         $_SESSION['pseudo'] = $_POST['pseudo'];
@@ -26,16 +25,16 @@ if (empty($_POST) == FALSE)
 }
 
 // Si l'user est connecté
-if (Session() == TRUE)
+if (My_Session::Session() == TRUE)
 {
     // on le redirige sur la vue de l'index
-    require '../view/view_index.php';
+    require CHEMIN_VIEWS . 'view-index.php';
 }
 // sinon
 else  
 {
      // encore la page pour se co
-    require '../view/view_connexion.php';
+    require CHEMIN_VIEWS .'application/views/view-connexion.php';
 }
 
 

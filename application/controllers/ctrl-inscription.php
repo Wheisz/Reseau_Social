@@ -5,8 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require '../library/session.php';
-require '../library/fonctions.php';
+require BASE_PATH . 'library/session.php';
+require BASE_PATH . 'library/fonctions.php';
 
 var_dump($_POST);
 
@@ -60,19 +60,23 @@ if (empty($_POST) == FALSE)
         {
             // le mdp bis est ok
             $TabValidite['mdp_bis'] = 'ok';
+            // si le pseudo, le mdp sont ok
+            if (isset($TabValidite['pseudo']) && isset($TabValidite['mdp']))
+            {
+                // on les sauvegarde dans la bdd
+                $bdd = ConnexionBDD();
+                SaveUser($bdd, $pseudo, $mdp);
+            }
         }
         
     }
-}
-else
-{
-    require '../view/view_inscription.php';
+    var_dump($TabErreur);
+    // si il y a une erreur
+    if (empty($TabErreur) == FALSE)
+    {
+        require BASE_PATH . 'application/views/view-inscription.php';
+    }
 }
 
-// si le pseudo, le mdp, le mdp bis sont ok
-if (isset($TabValidite['pseudo']) && isset($TabValidite['mdp']) && isset($TabValidite['mdp_bis']))
-{
-    // on les sauvegarde dans la bdd
-    $bdd = ConnexionBDD();
-    
-}
+
+
